@@ -1,8 +1,8 @@
-# BT-SecTester Project Overview
+# bt-sec-analyzer Project Overview
 
 ## Executive Summary
 
-BT-SecTester is an enterprise-grade Bluetooth security testing framework designed for authorized penetration testing, security research, and educational purposes. Built with Python and modern security tools, it provides a comprehensive suite for assessing Bluetooth device security.
+bt-sec-analyzer is an enterprise-grade Bluetooth security testing framework designed for authorized penetration testing, security research, and educational purposes. Built with Python and modern security tools, it provides a comprehensive suite for assessing Bluetooth device security.
 
 ## Architecture
 
@@ -10,7 +10,7 @@ BT-SecTester is an enterprise-grade Bluetooth security testing framework designe
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│                     BT-SecTester Engine                      │
+│                    bt-sec-analyzer Engine                     │
 ├─────────────────────────────────────────────────────────────┤
 │                                                               │
 │  ┌───────────┐  ┌────────────┐  ┌──────────┐  ┌──────────┐ │
@@ -72,30 +72,28 @@ BT-SecTester is an enterprise-grade Bluetooth security testing framework designe
 
 | Feature | Status | Notes |
 |---------|--------|-------|
-| Classic BT Scan | ✅ | PyBluez-based |
-| BLE Scan | ✅ | Bleak async |
-| Service Enum | ✅ | SDP + GATT |
-| DoS Flood | ✅ | L2CAP ping |
-| DoS Jam | ⚠️ | Requires hardware |
-| Deauth | ✅ | Bluetoothctl |
-| Hijacking | 🚧 | Partial impl |
-| PIN Brute | ✅ | Placeholder |
-| Sniffing | ✅ | tshark |
-| MITM | 🚧 | Planned |
-| AI Analysis | ✅ | Ollama |
-| PDF Reports | ✅ | Full |
-| HTML Reports | ✅ | Full |
-| Audit Logs | ✅ | JSON |
-| Multi-thread | ✅ | Concurrent ops |
-| CLI | ✅ | Full |
-| GUI | ❌ | Planned (Tauri) |
-
-Legend: ✅ Complete | 🚧 Partial | ⚠️ Limited | ❌ Not started
+| Classic BT Scan | Complete | PyBluez-based |
+| BLE Scan | Complete | Bleak async |
+| Service Enum | Complete | SDP + GATT |
+| DoS Flood | Complete | L2CAP ping |
+| DoS Jam | Limited | Requires hardware |
+| Deauth | Complete | Bluetoothctl |
+| Hijacking | Partial | Partial impl |
+| PIN Brute | Complete | Placeholder |
+| Sniffing | Complete | tshark |
+| MITM | Partial | Planned |
+| AI Analysis | Complete | Ollama |
+| PDF Reports | Complete | Full |
+| HTML Reports | Complete | Full |
+| Audit Logs | Complete | JSON |
+| Multi-thread | Complete | Concurrent ops |
+| CLI | Complete | Full |
+| GUI | Not started | Planned (Tauri) |
 
 ## File Structure
 
 ```
-bt-sectester/
+bt-sec-analyzer/
 ├── bt_sectester/                  # Main package (3,500+ LOC)
 │   ├── __init__.py               # Package init
 │   ├── __main__.py               # Main entry
@@ -189,12 +187,12 @@ User → Confirmation → Attack Simulator → Tools → Target
 3. Application → Target: Air gap (wireless)
 
 ### Security Controls
-- ✅ Input validation (MAC addresses, parameters)
-- ✅ Audit logging (all actions timestamped)
-- ✅ User confirmation (before destructive ops)
-- ✅ Privilege isolation (minimum necessary)
-- ✅ Ethical mode toggle
-- ✅ Session tracking
+- Input validation (MAC addresses, parameters)
+- Audit logging (all actions timestamped)
+- User confirmation (before destructive ops)
+- Privilege isolation (minimum necessary)
+- Ethical mode toggle
+- Session tracking
 
 ## Performance Characteristics
 
@@ -217,60 +215,50 @@ User → Confirmation → Attack Simulator → Tools → Target
 ### 1. Native Installation
 ```bash
 ./scripts/install_arch.sh
-poetry run bt-sectester-cli scan
+poetry run bt-sec-analyzer-cli scan
 ```
-- ✅ Full hardware access
-- ✅ Best performance
-- ⚠️ Requires system deps
+- Full hardware access
+- Best performance
+- Requires system deps
 
 ### 2. Containerized
 ```bash
-podman run --privileged bt-sectester:latest
+podman run --privileged bt-sec-analyzer:latest
 ```
-- ✅ Isolated environment
-- ✅ Portable
-- ⚠️ Requires privileged mode for BT
+- Isolated environment
+- Portable
+- Requires privileged mode for BT
 
 ### 3. Standalone Executable
 ```bash
 ./scripts/build_executable.sh
-./dist/bt-sectester
+./dist/bt-sec-analyzer
 ```
-- ✅ Single file distribution
-- ✅ No Python needed
-- ⚠️ Larger file size (~50MB)
+- Single file distribution
+- No Python needed
+- Larger file size (~50MB)
 
 ## Future Roadmap
 
-### Phase 2 (Q2 2026)
+### Phase 2
 - [ ] Tauri-based GUI with Svelte
 - [ ] Real-time attack visualization
 - [ ] Ubertooth hardware support
 - [ ] Advanced MITM capabilities
 - [ ] Multi-language support (i18n)
 
-### Phase 3 (Q3 2026)
+### Phase 3
 - [ ] Plugin system for custom attacks
 - [ ] Database integration (PostgreSQL)
 - [ ] Web dashboard (optional)
 - [ ] Collaborative features
 - [ ] Windows/macOS support
 
-### Phase 4 (Q4 2026)
+### Phase 4
 - [ ] Machine learning for anomaly detection
 - [ ] Automated vulnerability scoring
 - [ ] Integration with other pentest tools
 - [ ] Cloud report storage (optional)
-
-## Development Stats
-
-- **Lines of Code**: ~5,000
-- **Modules**: 15+
-- **Tests**: 10+ test files
-- **Dependencies**: 20+ Python packages
-- **Documentation**: 10+ markdown files
-- **Development Time**: Iterative AI-assisted development
-- **Test Coverage**: Target 80%+
 
 ## Compliance & Legal
 
@@ -289,10 +277,10 @@ podman run --privileged bt-sectester:latest
 
 ## Support & Community
 
-- **Repository**: github.com/yourusername/bt-sectester
-- **Issues**: GitHub Issues (bugs, features)
-- **Discussions**: GitHub Discussions (Q&A)
-- **Security**: security@example.com (private)
+- **Repository**: [github.com/mfscpayload-690/bt-sec-analyzer](https://github.com/mfscpayload-690/bt-sec-analyzer)
+- **Issues**: [GitHub Issues](https://github.com/mfscpayload-690/bt-sec-analyzer/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/mfscpayload-690/bt-sec-analyzer/discussions)
+- **Security**: [GitHub Security Advisories](https://github.com/mfscpayload-690/bt-sec-analyzer/security/advisories)
 - **License**: MIT (permissive)
 
 ## Acknowledgments
@@ -310,4 +298,4 @@ Built with:
 **Version**: 0.1.0
 **Status**: Production-ready (CLI), GUI in development
 **Last Updated**: 2026-02-17
-**Maintained By**: BT-SecTester Team
+**Maintained By**: mfscpayload-690

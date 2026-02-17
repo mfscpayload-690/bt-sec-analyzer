@@ -1,4 +1,4 @@
-# Development Guide for BT-SecTester
+# Development Guide for bt-sec-analyzer
 
 ## Quick Start
 
@@ -103,22 +103,22 @@ bt-sec-analyzer/
 
 #### Scan for devices:
 ```bash
-poetry run bt-sectester-cli scan --duration 15 --classic --ble
+poetry run bt-sec-analyzer-cli scan --duration 15 --classic --ble
 ```
 
 #### Enumerate services:
 ```bash
-poetry run bt-sectester-cli enumerate AA:BB:CC:DD:EE:FF
+poetry run bt-sec-analyzer-cli enumerate AA:BB:CC:DD:EE:FF
 ```
 
 #### DoS simulation:
 ```bash
-poetry run bt-sectester-cli simulate dos AA:BB:CC:DD:EE:FF --duration 30
+poetry run bt-sec-analyzer-cli simulate dos AA:BB:CC:DD:EE:FF --duration 30
 ```
 
 #### Generate report:
 ```bash
-poetry run bt-sectester-cli report session_20260217_120000 --format pdf
+poetry run bt-sec-analyzer-cli report session_20260217_120000 --format pdf
 ```
 
 ### Python API
@@ -190,10 +190,10 @@ cd docker
 ./build.sh
 
 # Run main app
-podman run -it --privileged --network=host bt-sectester:latest
+podman run -it --privileged --network=host bt-sec-analyzer:latest
 
 # Run isolated Bettercap
-podman run -it --privileged --network=host bt-sectester-bettercap:latest
+podman run -it --privileged --network=host bt-sec-analyzer-bettercap:latest
 ```
 
 ### Building Standalone Executable
@@ -203,7 +203,7 @@ chmod +x scripts/build_executable.sh
 ./scripts/build_executable.sh
 
 # Run
-./dist/bt-sectester
+./dist/bt-sec-analyzer
 ```
 
 ## Configuration
@@ -307,10 +307,6 @@ poetry install --with dev
 
 ## Support
 
-- GitHub Issues: Report bugs and request features
-- Discussions: Ask questions and share ideas
-- Email: security@example.com (for responsible disclosure)
-
----
-
-Happy hacking! (Ethically, of course 😊)
+- GitHub Issues: [Report bugs and request features](https://github.com/mfscpayload-690/bt-sec-analyzer/issues)
+- Discussions: [Ask questions and share ideas](https://github.com/mfscpayload-690/bt-sec-analyzer/discussions)
+- Security: [GitHub Security Advisories](https://github.com/mfscpayload-690/bt-sec-analyzer/security/advisories) (for responsible disclosure)
