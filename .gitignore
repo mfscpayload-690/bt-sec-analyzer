@@ -67,7 +67,7 @@ configs/credentials.yaml
 
 # Node modules (for UI)
 node_modules/
-package-lock.json
+# package-lock.json (committed for reproducible CI/CD builds)
 
 # Tauri
 ui/src-tauri/target/
