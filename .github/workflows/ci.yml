@@ -40,7 +40,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          poetry install --with dev --extras bluetooth --no-interaction
+          poetry install --with dev --no-interaction
 
       - name: Run Black (formatting check)
         run: |
@@ -98,7 +98,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          poetry install --with dev --extras bluetooth --no-interaction
+          poetry install --with dev --no-interaction
         env:
           POETRY_VIRTUALENVS_CREATE: true
 
@@ -147,7 +147,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          poetry install --with dev --extras bluetooth --no-interaction
+          poetry install --with dev --no-interaction
 
       - name: Run mypy
         run: |
@@ -187,7 +187,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          poetry install --extras bluetooth --no-interaction
+          poetry install --no-interaction
 
       - name: Run safety check
         run: |
@@ -234,7 +234,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          poetry install --extras bluetooth --no-interaction
+          poetry install --no-interaction
 
       - name: Test Python imports
         run: |

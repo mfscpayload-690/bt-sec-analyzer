@@ -17,9 +17,9 @@ classifiers = [
 ]
 
 [tool.poetry.dependencies]
-python = ">=3.12,<3.14"
+python = ">=3.12,<3.13"
 pybluez = {version = "^0.23", markers = "sys_platform == 'linux'", optional = true}
-bleak = {version = "^0.22.0", python = ">=3.12,<3.14"}
+bleak = "^0.22.0"
 structlog = "^24.1.0"
 ollama = "^0.1.0"
 pyyaml = "^6.0"
