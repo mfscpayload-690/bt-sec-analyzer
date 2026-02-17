@@ -1,0 +1,104 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv
+
+# Poetry
+poetry.lock
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+*.cover
+.hypothesis/
+
+# Logs
+logs/
+*.log
+*.log.*
+audit_*.json
+
+# Reports
+reports/
+*.pdf
+
+# Captures
+captures/
+*.pcap
+*.pcapng
+*.btsnoop
+
+# Config (may contain sensitive data)
+configs/local_*.yaml
+configs/credentials.yaml
+
+# Node modules (for UI)
+node_modules/
+package-lock.json
+
+# Tauri
+ui/src-tauri/target/
+ui/dist/
+
+# Electron
+ui/out/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Session data
+sessions/
+*.session
+
+# Ollama cache
+.ollama/
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
+# Secrets
+.env
+.env.local
+secrets/
+*.key
+*.pem
+
+# OS
+Thumbs.db
