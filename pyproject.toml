@@ -8,6 +8,7 @@ readme = "README.md"
 homepage = "https://github.com/mfscpayload-690/bt-sec-analyzer"
 repository = "https://github.com/mfscpayload-690/bt-sec-analyzer"
 keywords = ["bluetooth", "security", "testing", "pentest", "wireless"]
+packages = [{ include = "bt_sectester" }]
 classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Information Technology",
