@@ -17,9 +17,8 @@ classifiers = [
 ]
 
 [tool.poetry.dependencies]
-python = ">=3.12,<3.13"
-pybluez = {version = "^0.23", markers = "sys_platform == 'linux'", optional = true}
-bleak = "^0.22.0"
+python = "^3.12"
+bleak = "^2.1.0"
 structlog = "^24.1.0"
 ollama = "^0.1.0"
 pyyaml = "^6.0"
@@ -50,9 +49,6 @@ pre-commit = "^3.6.0"
 [tool.poetry.scripts]
 bt-sec-analyzer = "bt_sectester.__main__:main"
 bt-sec-analyzer-cli = "bt_sectester.cli:main"
-
-[tool.poetry.extras]
-bluetooth = ["pybluez"]
 
 [build-system]
 requires = ["poetry-core"]

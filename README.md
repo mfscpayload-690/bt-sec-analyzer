@@ -71,6 +71,10 @@ cd bt-sec-analyzer
 # Install Python dependencies
 poetry install
 
+# Optional: Install PyBluez for Classic Bluetooth support (Linux only)
+# Note: PyBluez has dependency conflicts with Poetry and must be installed separately
+pip install pybluez  # or: poetry run pip install pybluez
+
 # Setup Ollama (for AI features)
 curl -fsSL https://ollama.com/install.sh | sh
 ollama pull qwen2.5-coder:7b
