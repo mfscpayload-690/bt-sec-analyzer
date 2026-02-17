@@ -1,47 +1,45 @@
 <script>
-  import svelteLogo from './assets/svelte.svg'
-  import viteLogo from '/vite.svg'
-  import Counter from './lib/Counter.svelte'
+  import { activePage, engineStatus } from './lib/stores/app.js';
+  import { getStatus } from './lib/services/api.js';
+  import { onMount } from 'svelte';
+
+  import Sidebar from './lib/components/Sidebar.svelte';
+  import Dashboard from './lib/components/Dashboard.svelte';
+  import AttackPanel from './lib/components/AttackPanel.svelte';
+  import LogViewer from './lib/components/LogViewer.svelte';
+  import TerminalPanel from './lib/components/TerminalPanel.svelte';
+  import ReportPanel from './lib/components/ReportPanel.svelte';
+  import Settings from './lib/components/Settings.svelte';
+  import Toasts from './lib/components/Toasts.svelte';
+
+  onMount(async () => {
+    try {
+      const status = await getStatus();
+      engineStatus.set({ ...status, connected: true });
+    } catch {
+      engineStatus.update(s => ({ ...s, connected: false }));
+    }
+  });
 </script>
 
-<main>
-  <div>
-    <a href="https://vite.dev" target="_blank" rel="noreferrer">
-      <img src={viteLogo} class="logo" alt="Vite Logo" />
-    </a>
-    <a href="https://svelte.dev" target="_blank" rel="noreferrer">
-      <img src={svelteLogo} class="logo svelte" alt="Svelte Logo" />
-    </a>
-  </div>
-  <h1>Vite + Svelte</h1>
+<div class="flex min-h-screen bg-slate-950 text-slate-200">
+  <Sidebar />
 
-  <div class="card">
-    <Counter />
-  </div>
+  <main class="flex-1 overflow-y-auto">
+    {#if $activePage === 'dashboard'}
+      <Dashboard />
+    {:else if $activePage === 'attacks'}
+      <AttackPanel />
+    {:else if $activePage === 'logs'}
+      <LogViewer />
+    {:else if $activePage === 'terminal'}
+      <TerminalPanel />
+    {:else if $activePage === 'reports'}
+      <ReportPanel />
+    {:else if $activePage === 'settings'}
+      <Settings />
+    {/if}
+  </main>
+</div>
 
-  <p>
-    Check out <a href="https://github.com/sveltejs/kit#readme" target="_blank" rel="noreferrer">SvelteKit</a>, the official Svelte app framework powered by Vite!
-  </p>
-
-  <p class="read-the-docs">
-    Click on the Vite and Svelte logos to learn more
-  </p>
-</main>
-
-<style>
-  .logo {
-    height: 6em;
-    padding: 1.5em;
-    will-change: filter;
-    transition: filter 300ms;
-  }
-  .logo:hover {
-    filter: drop-shadow(0 0 2em #646cffaa);
-  }
-  .logo.svelte:hover {
-    filter: drop-shadow(0 0 2em #ff3e00aa);
-  }
-  .read-the-docs {
-    color: #888;
-  }
-</style>
+<Toasts />

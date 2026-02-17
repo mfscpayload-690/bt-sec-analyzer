@@ -2,12 +2,42 @@
 Main entry point for bt-sec-analyzer GUI application.
 """
 
+import subprocess
 import sys
+import threading
+import time
+import webbrowser
 from pathlib import Path
 
-from bt_sectester.core.engine import BTSecEngine
 from bt_sectester.utils.config import Config
 from bt_sectester.utils.logger import setup_logger
+
+
+def launch_backend(host: str = "127.0.0.1", port: int = 8745) -> None:
+    """Start the FastAPI backend server."""
+    import uvicorn
+
+    uvicorn.run(
+        "bt_sectester.core.api_bridge:app",
+        host=host,
+        port=port,
+        reload=False,
+        log_level="warning",
+    )
+
+
+def launch_frontend_dev() -> subprocess.Popen:
+    """Start the Vite dev server (development only)."""
+    ui_dir = Path(__file__).parent.parent / "ui"
+    if not (ui_dir / "node_modules").exists():
+        print("[*] Installing frontend dependencies...")
+        subprocess.run(["npm", "install"], cwd=ui_dir, check=True)
+    return subprocess.Popen(
+        ["npm", "run", "dev", "--", "--open"],
+        cwd=ui_dir,
+        stdout=subprocess.DEVNULL,
+        stderr=subprocess.DEVNULL,
+    )
 
 
 def main() -> int:
@@ -33,36 +63,79 @@ def main() -> int:
 
         # Display ethical disclaimer
         if config.ui.get("show_ethical_disclaimer", True):
-            print("\n" + "=" * 80)
-            print("BT-SEC-ANALYZER - BLUETOOTH SECURITY TESTING FRAMEWORK")
-            print("=" * 80)
-            print("\n⚠️  ETHICAL USE ONLY ⚠️\n")
-            print("This tool is designed for AUTHORIZED security testing only.")
-            print("Unauthorized use may be illegal and unethical.\n")
-            print("By using this tool, you confirm that:")
-            print("  • You have explicit authorization to test target devices")
-            print("  • You will comply with all applicable laws")
-            print("  • You will enable audit logging for all operations")
-            print("  • You will not use this tool for malicious purposes\n")
-            print("=" * 80 + "\n")
+            print("\n" + "=" * 60)
+            print("  BT-SEC-ANALYZER")
+            print("  Bluetooth Security Testing Framework")
+            print("=" * 60)
+            print("\n  This tool is for AUTHORIZED security testing only.")
+            print("  Unauthorized use may be illegal and unethical.\n")
+            print("=" * 60 + "\n")
 
             response = input("Do you accept these terms? (yes/no): ").strip().lower()
             if response not in ["yes", "y"]:
                 print("\nTerms not accepted. Exiting.")
                 return 1
 
-        # Initialize engine
-        print("\n[*] Initializing bt-sec-analyzer engine...")
-        engine = BTSecEngine(config)
+        # CLI-only mode
+        if "--cli" in sys.argv:
+            print("\n[!] Use CLI mode:")
+            print("    bt-sec-analyzer-cli --help\n")
+            return 0
 
-        print(f"[+] Engine initialized (Session: {engine.session_id})")
-        print(f"[+] Ethical mode: {'ENABLED' if config.app.ethical_mode else 'DISABLED'}")
-        print(f"[+] Audit logging: {'ENABLED' if config.logging.audit.get('enabled') else 'DISABLED'}\n")
+        # Launch GUI mode: backend API + frontend
+        backend_host = "127.0.0.1"
+        backend_port = 8745
+        frontend_url = "http://localhost:5173"
 
-        # For now, launch CLI interface
-        # In the future, this would launch the Tauri/Electron GUI
-        print("[!] GUI not yet implemented. Use CLI mode:")
-        print("    python -m bt_sectester.cli --help\n")
+        print(f"\n[*] Starting backend API on {backend_host}:{backend_port}...")
+
+        backend_thread = threading.Thread(
+            target=launch_backend,
+            args=(backend_host, backend_port),
+            daemon=True,
+        )
+        backend_thread.start()
+
+        # Give backend a moment to start
+        time.sleep(1)
+        print("[+] Backend API running")
+
+        # Check if built frontend exists
+        dist_dir = Path(__file__).parent.parent / "ui" / "dist"
+        ui_dir = Path(__file__).parent.parent / "ui"
+        vite_proc = None
+
+        if dist_dir.exists():
+            # Production: serve static files from dist/ via the API server
+            frontend_url = f"http://{backend_host}:{backend_port}"
+            print(f"[+] Serving built frontend at {frontend_url}")
+        elif ui_dir.exists() and (ui_dir / "package.json").exists():
+            # Development: launch Vite dev server
+            print("[*] Starting Vite dev server...")
+            vite_proc = launch_frontend_dev()
+            time.sleep(2)
+            print(f"[+] Frontend dev server at {frontend_url}")
+        else:
+            print("[!] No frontend found. Access API directly:")
+            print(f"    {backend_host}:{backend_port}/api/status")
+            frontend_url = None
+
+        if frontend_url:
+            print(f"\n[+] Opening browser: {frontend_url}")
+            webbrowser.open(frontend_url)
+
+        print("\n[*] Press Ctrl+C to stop.\n")
+
+        # Keep main thread alive
+        try:
+            while True:
+                time.sleep(1)
+        except KeyboardInterrupt:
+            pass
+        finally:
+            if vite_proc:
+                vite_proc.terminate()
+            print("\n[*] Shutting down.")
 
         return 0
 
