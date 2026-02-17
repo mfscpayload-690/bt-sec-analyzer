@@ -65,8 +65,8 @@ sudo systemctl start bluetooth.service
 
 ```bash
 # Clone repository
-git clone https://github.com/yourusername/bt-sectester.git
-cd bt-sectester
+git clone https://github.com/mfscpayload-690/bt-sec-analyzer.git
+cd bt-sec-analyzer
 
 # Install Python dependencies
 poetry install
@@ -134,18 +134,6 @@ poetry run pytest --cov=bt_sectester --cov-report=html
 poetry run pytest tests/test_scanning.py
 ```
 
-## 📊 Performance Optimization
-
-Designed for high-performance hardware:
-- **CPU**: Intel Core Ultra 5 210H (multi-core utilization)
-- **GPU**: RTX 4050 (Ollama inference acceleration)
-- **RAM**: 16GB DDR5 (concurrent operations)
-
-Utilizes:
-- ThreadPoolExecutor for I/O-bound operations (scanning, network)
-- ProcessPoolExecutor for CPU-bound tasks (brute-forcing, analysis)
-- asyncio for non-blocking Bluetooth interactions
-
 ## 🔒 Security Features
 
 - **Ethical Mode**: Enforces audit logging, prevents unattended execution
@@ -180,18 +168,10 @@ Contributions are welcome! Please:
 
 MIT License - See LICENSE file for details
 
-## 🙏 Acknowledgments
-
-- BlueZ project for Linux Bluetooth stack
-- Bettercap for network security tools
-- Ollama for local LLM infrastructure
-- The security research community
-
 ## 📧 Contact
 
 For questions, issues, or responsible disclosure of vulnerabilities:
-- GitHub Issues: [github.com/yourusername/bt-sectester/issues](https://github.com/yourusername/bt-sectester/issues)
-- Email: security@example.com
+- GitHub Issues: [github.com/mfscpayload-690/bt-sec-analyzer](https://github.com/mfscpayload-690/bt-sec-analyzer)
 
 ---
 
