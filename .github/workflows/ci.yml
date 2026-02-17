@@ -24,6 +24,12 @@ jobs:
           curl -sSL https://install.python-poetry.org | python3 -
           echo "$HOME/.local/bin" >> $GITHUB_PATH
 
+      - name: Generate lock file if missing
+        run: |
+          if [ ! -f poetry.lock ]; then
+            poetry lock --no-interaction
+          fi
+
       - name: Cache Poetry dependencies
         uses: actions/cache@v3
         with:
@@ -34,7 +40,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          poetry install --with dev --no-interaction
+          poetry install --with dev --extras bluetooth --no-interaction
 
       - name: Run Black (formatting check)
         run: |
@@ -76,6 +82,12 @@ jobs:
           curl -sSL https://install.python-poetry.org | python3 -
           echo "$HOME/.local/bin" >> $GITHUB_PATH
 
+      - name: Generate lock file if missing
+        run: |
+          if [ ! -f poetry.lock ]; then
+            poetry lock --no-interaction
+          fi
+
       - name: Cache Poetry dependencies
         uses: actions/cache@v3
         with:
@@ -86,7 +98,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          poetry install --with dev --no-interaction
+          poetry install --with dev --extras bluetooth --no-interaction
         env:
           POETRY_VIRTUALENVS_CREATE: true
 
@@ -119,6 +131,12 @@ jobs:
           curl -sSL https://install.python-poetry.org | python3 -
           echo "$HOME/.local/bin" >> $GITHUB_PATH
 
+      - name: Generate lock file if missing
+        run: |
+          if [ ! -f poetry.lock ]; then
+            poetry lock --no-interaction
+          fi
+
       - name: Cache Poetry dependencies
         uses: actions/cache@v3
         with:
@@ -129,7 +147,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          poetry install --with dev --no-interaction
+          poetry install --with dev --extras bluetooth --no-interaction
 
       - name: Run mypy
         run: |
@@ -153,6 +171,12 @@ jobs:
           curl -sSL https://install.python-poetry.org | python3 -
           echo "$HOME/.local/bin" >> $GITHUB_PATH
 
+      - name: Generate lock file if missing
+        run: |
+          if [ ! -f poetry.lock ]; then
+            poetry lock --no-interaction
+          fi
+
       - name: Cache Poetry dependencies
         uses: actions/cache@v3
         with:
@@ -163,7 +187,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          poetry install --no-interaction
+          poetry install --extras bluetooth --no-interaction
 
       - name: Run safety check
         run: |
@@ -194,9 +218,23 @@ jobs:
           curl -sSL https://install.python-poetry.org | python3 -
           echo "$HOME/.local/bin" >> $GITHUB_PATH
 
+      - name: Generate lock file if missing
+        run: |
+          if [ ! -f poetry.lock ]; then
+            poetry lock --no-interaction
+          fi
+
+      - name: Cache Poetry dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/pypoetry
+          key: ${{ runner.os }}-poetry-${{ hashFiles('**/poetry.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-poetry-
+
       - name: Install dependencies
         run: |
-          poetry install --no-interaction
+          poetry install --extras bluetooth --no-interaction
 
       - name: Test Python imports
         run: |
