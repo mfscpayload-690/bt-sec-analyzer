@@ -1,0 +1,18 @@
+# Dockerfile for Bettercap in container (for isolation)
+FROM archlinux:latest
+
+# Install bettercap and dependencies
+RUN pacman -Syu --noconfirm && \
+    pacman -S --noconfirm \
+    bettercap \
+    bluez \
+    bluez-utils \
+    wireless_tools \
+    && pacman -Scc --noconfirm
+
+# Create working directory
+WORKDIR /captures
+
+# Entrypoint for bettercap
+ENTRYPOINT ["bettercap"]
+CMD ["-h"]
