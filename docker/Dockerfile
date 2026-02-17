@@ -1,4 +1,4 @@
-# Dockerfile for BT-SecTester
+# Dockerfile for bt-sec-analyzer
 # Uses Arch Linux base for compatibility with target platform
 
 FROM archlinux:latest

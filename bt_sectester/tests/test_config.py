@@ -15,7 +15,7 @@ def test_config_load_default():
     """Test loading default configuration."""
     config = Config()
 
-    assert config.app.name == "BT-SecTester"
+    assert config.app.name == "bt-sec-analyzer"
     assert config.app.ethical_mode is True
     assert config.logging.level == "INFO"
 
@@ -47,7 +47,7 @@ def test_config_get():
     """Test getting configuration values."""
     config = Config()
 
-    assert config.get("app.name") == "BT-SecTester"
+    assert config.get("app.name") == "bt-sec-analyzer"
     assert config.get("logging.level") == "INFO"
     assert config.get("nonexistent.key", "default") == "default"
 

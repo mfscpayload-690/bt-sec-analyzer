@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Setup script for BT-SecTester.
+Setup script for bt-sec-analyzer.
 
 Checks dependencies, sets up environment, and configures system.
 """
@@ -204,7 +204,7 @@ def install_python_dependencies() -> bool:
 
 def main() -> int:
     """Main setup function."""
-    print_header("BT-SecTester Setup")
+    print_header("bt-sec-analyzer Setup")
 
     print("This script will check dependencies and set up the environment.\n")
 
@@ -231,7 +231,7 @@ def main() -> int:
 
     # Summary
     print_header("Setup Complete")
-    print_success("System is ready for BT-SecTester!")
+    print_success("System is ready for bt-sec-analyzer!")
     print("\nNext steps:")
     print("  1. Ensure Bluetooth service is running")
     print("  2. Add user to bluetooth group (if needed)")
@@ -239,7 +239,7 @@ def main() -> int:
     print("  4. Pull Ollama model (if using AI features)")
     print("\nRun the application with:")
     print("  poetry run python -m bt_sectester        # GUI mode")
-    print("  poetry run bt-sectester-cli --help       # CLI mode")
+    print("  poetry run bt-sec-analyzer-cli --help       # CLI mode")
 
     return 0
 

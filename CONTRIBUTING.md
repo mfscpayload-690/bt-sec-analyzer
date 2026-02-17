@@ -1,6 +1,6 @@
-# Contributing to BT-SecTester
+# Contributing to bt-sec-analyzer
 
-Thank you for your interest in contributing to BT-SecTester! This document provides guidelines and instructions for contributing.
+Thank you for your interest in contributing to bt-sec-analyzer! This document provides guidelines and instructions for contributing.
 
 ## Code of Conduct
 
@@ -14,8 +14,8 @@ Thank you for your interest in contributing to BT-SecTester! This document provi
 1. Fork the repository
 2. Clone your fork:
    ```bash
-   git clone https://github.com/yourusername/bt-sectester.git
-   cd bt-sectester
+   git clone https://github.com/mfscpayload-690/bt-sec-analyzer.git
+   cd bt-sec-analyzer
    ```
 
 3. Install dependencies:
@@ -124,7 +124,7 @@ When contributing attack simulations or security features:
 
 **DO NOT** open public issues for security vulnerabilities.
 
-Instead, email: security@example.com
+Instead, use [GitHub Security Advisories](https://github.com/mfscpayload-690/bt-sec-analyzer/security/advisories) for responsible disclosure.
 
 Include:
 - Description of the vulnerability
@@ -144,4 +144,4 @@ By contributing, you agree that your contributions will be licensed under the MI
 
 ---
 
-Thank you for helping make BT-SecTester better!
+Thank you for helping make bt-sec-analyzer better!

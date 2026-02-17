@@ -2,7 +2,7 @@
 
 import pytest
 
-# Configure pytest for BT-SecTester tests
+# Configure pytest for bt-sec-analyzer tests
 pytest_plugins = []
 
 

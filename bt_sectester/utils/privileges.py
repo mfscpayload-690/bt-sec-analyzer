@@ -1,5 +1,5 @@
 """
-Privilege escalation utilities for BT-SecTester.
+Privilege escalation utilities for bt-sec-analyzer.
 
 Handles sudo/pkexec operations securely with user prompts.
 """

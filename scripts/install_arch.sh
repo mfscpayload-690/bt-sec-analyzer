@@ -1,9 +1,9 @@
 #!/bin/bash
-# Install script for BT-SecTester on Arch Linux
+# Install script for bt-sec-analyzer on Arch Linux
 
 set -e
 
-echo "Installing BT-SecTester on Arch Linux..."
+echo "Installing bt-sec-analyzer on Arch Linux..."
 
 # Check if running as root
 if [ "$EUID" -eq 0 ]; then
@@ -74,5 +74,5 @@ echo "IMPORTANT: You need to log out and back in for group changes to take effec
 echo ""
 echo "After logging back in, run:"
 echo "  poetry run python scripts/setup.py  # Verify installation"
-echo "  poetry run bt-sectester-cli --help   # Use CLI"
+echo "  poetry run bt-sec-analyzer-cli --help   # Use CLI"
 echo ""

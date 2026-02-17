@@ -1,5 +1,5 @@
 """
-Helper utilities for BT-SecTester.
+Helper utilities for bt-sec-analyzer.
 """
 
 import re

@@ -1,5 +1,5 @@
 """
-Configuration management for BT-SecTester.
+Configuration management for bt-sec-analyzer.
 
 Handles loading, validation, and access to configuration settings.
 """
@@ -16,7 +16,7 @@ from pydantic_settings import BaseSettings
 class AppConfig(BaseModel):
     """Application-level configuration."""
 
-    name: str = "BT-SecTester"
+    name: str = "bt-sec-analyzer"
     version: str = "0.1.0"
     debug: bool = False
     ethical_mode: bool = True

@@ -1,5 +1,5 @@
 """
-Structured logging system for BT-SecTester.
+Structured logging system for bt-sec-analyzer.
 
 Provides JSON-structured logging with rotation, audit trails, and UI integration.
 """

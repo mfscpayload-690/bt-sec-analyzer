@@ -1,12 +1,12 @@
 [tool.poetry]
-name = "bt-sectester"
+name = "bt-sec-analyzer"
 version = "0.1.0"
 description = "Enterprise-grade Bluetooth security testing framework for authorized assessments"
-authors = ["BT-SecTester Team <security@example.com>"]
+authors = ["mfscpayload-690"]
 license = "MIT"
 readme = "README.md"
-homepage = "https://github.com/yourusername/bt-sectester"
-repository = "https://github.com/yourusername/bt-sectester"
+homepage = "https://github.com/mfscpayload-690/bt-sec-analyzer"
+repository = "https://github.com/mfscpayload-690/bt-sec-analyzer"
 keywords = ["bluetooth", "security", "testing", "pentest", "wireless"]
 classifiers = [
     "Development Status :: 3 - Alpha",
@@ -46,8 +46,8 @@ pylint = "^3.0.3"
 pre-commit = "^3.6.0"
 
 [tool.poetry.scripts]
-bt-sectester = "bt_sectester.__main__:main"
-bt-sectester-cli = "bt_sectester.cli:main"
+bt-sec-analyzer = "bt_sectester.__main__:main"
+bt-sec-analyzer-cli = "bt_sectester.cli:main"
 
 [build-system]
 requires = ["poetry-core"]

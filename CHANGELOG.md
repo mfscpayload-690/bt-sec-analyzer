@@ -1,6 +1,6 @@
 # Changelog
 
-All notable changes to BT-SecTester will be documented in this file.
+All notable changes to bt-sec-analyzer will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
@@ -112,7 +112,7 @@ poetry run bt-sec-analyzer-cli simulate dos AA:BB:CC:DD:EE:FF
 - Limited cross-platform support
 
 **Contributors:**
-- BT-SecTester Team
+- mfscpayload-690
 
 ---
 

@@ -1,4 +1,4 @@
-# BT-SecTester
+# bt-sec-analyzer
 
 **Enterprise-Grade Bluetooth Security Testing Framework**
 

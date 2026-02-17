@@ -1,5 +1,5 @@
 """
-Main engine/coordinator for BT-SecTester.
+Main engine/coordinator for bt-sec-analyzer.
 
 Orchestrates scanning, attacks, reporting, and UI interactions.
 """
@@ -20,11 +20,11 @@ from bt_sectester.utils.privileges import PrivilegeManager
 
 
 class BTSecEngine(LoggerMixin):
-    """Main engine coordinating all BT-SecTester operations."""
+    """Main engine coordinating all bt-sec-analyzer operations."""
 
     def __init__(self, config: Optional[Config] = None):
         """
-        Initialize BT-SecTester engine.
+        Initialize bt-sec-analyzer engine.
 
         Args:
             config: Configuration object (loads default if None)
@@ -45,7 +45,7 @@ class BTSecEngine(LoggerMixin):
         }
 
         self.logger.info(
-            "BT-SecTester engine initialized",
+            "bt-sec-analyzer engine initialized",
             session_id=self.session_id,
             ethical_mode=self.config.app.ethical_mode,
         )
@@ -260,7 +260,7 @@ class BTSecEngine(LoggerMixin):
 
     def shutdown(self) -> None:
         """Gracefully shutdown the engine."""
-        self.logger.info("Shutting down BT-SecTester engine")
+        self.logger.info("Shutting down bt-sec-analyzer engine")
 
         # Save session
         try:

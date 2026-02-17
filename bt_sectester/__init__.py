@@ -1,11 +1,11 @@
 """
-BT-SecTester - Bluetooth Security Testing Framework
+bt-sec-analyzer - Bluetooth Security Testing Framework
 
 Main package initialization.
 """
 
 __version__ = "0.1.0"
-__author__ = "BT-SecTester Team"
+__author__ = "mfscpayload-690"
 __license__ = "MIT"
 
 # Import core components for easier access

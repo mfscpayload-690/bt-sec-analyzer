@@ -1,5 +1,5 @@
 """
-Command-line interface for BT-SecTester.
+Command-line interface for bt-sec-analyzer.
 """
 
 import json
@@ -25,7 +25,7 @@ console = Console()
 @click.option("--debug", is_flag=True, help="Enable debug logging")
 @click.pass_context
 def cli(ctx: click.Context, config: Optional[str], debug: bool) -> None:
-    """BT-SecTester - Bluetooth Security Testing Framework."""
+    """bt-sec-analyzer - Bluetooth Security Testing Framework."""
     # Load configuration
     cfg = Config.load(config) if config else Config.load()
 

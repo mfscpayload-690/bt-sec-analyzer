@@ -1,4 +1,4 @@
-name: BT-SecTester CI/CD
+name: bt-sec-analyzer CI/CD
 
 on:
   push:

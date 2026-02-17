@@ -1,5 +1,5 @@
 """
-Main entry point for BT-SecTester GUI application.
+Main entry point for bt-sec-analyzer GUI application.
 """
 
 import sys
@@ -12,7 +12,7 @@ from bt_sectester.utils.logger import setup_logger
 
 def main() -> int:
     """
-    Main entry point for BT-SecTester.
+    Main entry point for bt-sec-analyzer.
 
     Returns:
         Exit code
@@ -34,7 +34,7 @@ def main() -> int:
         # Display ethical disclaimer
         if config.ui.get("show_ethical_disclaimer", True):
             print("\n" + "=" * 80)
-            print("BT-SECTESTER - BLUETOOTH SECURITY TESTING FRAMEWORK")
+            print("BT-SEC-ANALYZER - BLUETOOTH SECURITY TESTING FRAMEWORK")
             print("=" * 80)
             print("\n⚠️  ETHICAL USE ONLY ⚠️\n")
             print("This tool is designed for AUTHORIZED security testing only.")
@@ -52,7 +52,7 @@ def main() -> int:
                 return 1
 
         # Initialize engine
-        print("\n[*] Initializing BT-SecTester engine...")
+        print("\n[*] Initializing bt-sec-analyzer engine...")
         engine = BTSecEngine(config)
 
         print(f"[+] Engine initialized (Session: {engine.session_id})")

@@ -8,7 +8,7 @@
 
 ## Ethical Use Policy
 
-BT-SecTester is designed exclusively for:
+bt-sec-analyzer is designed exclusively for:
 - **Authorized security testing** with written permission
 - **Educational purposes** in controlled environments
 - **Security research** on owned devices
@@ -26,7 +26,7 @@ BT-SecTester is designed exclusively for:
 
 ### How to Report
 
-Email security vulnerabilities to: **security@example.com**
+Use [GitHub Security Advisories](https://github.com/mfscpayload-690/bt-sec-analyzer/security/advisories) for responsible disclosure.
 
 Include:
 1. **Description**: Clear explanation of the vulnerability
@@ -84,9 +84,9 @@ We follow responsible disclosure practices:
 
 ## Security Contacts
 
-- **Security Issues**: security@example.com
-- **General Questions**: GitHub Discussions
-- **Non-Security Bugs**: GitHub Issues
+- **Security Issues**: [GitHub Security Advisories](https://github.com/mfscpayload-690/bt-sec-analyzer/security/advisories)
+- **General Questions**: [GitHub Discussions](https://github.com/mfscpayload-690/bt-sec-analyzer/discussions)
+- **Non-Security Bugs**: [GitHub Issues](https://github.com/mfscpayload-690/bt-sec-analyzer/issues)
 
 ## Recognition
 
@@ -108,4 +108,4 @@ Users are responsible for compliance with all applicable laws, including:
 
 ---
 
-Thank you for helping keep BT-SecTester secure!
+Thank you for helping keep bt-sec-analyzer secure!

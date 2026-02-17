@@ -4,7 +4,7 @@
 
 ### BTSecEngine
 
-Main engine coordinating all BT-SecTester operations.
+Main engine coordinating all bt-sec-analyzer operations.
 
 ```python
 from bt_sectester.core.engine import BTSecEngine

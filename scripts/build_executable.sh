@@ -3,7 +3,7 @@
 
 set -e
 
-echo "Building BT-SecTester standalone executable..."
+echo "Building bt-sec-analyzer standalone executable..."
 
 # Check if poetry is available
 if ! command -v poetry &> /dev/null; then
@@ -24,7 +24,7 @@ mkdir -p build dist
 # Build executable
 echo "[*] Building executable with PyInstaller..."
 poetry run pyinstaller \
-    --name bt-sectester \
+    --name bt-sec-analyzer \
     --onefile \
     --hidden-import=bt_sectester \
     --hidden-import=bluetooth \
@@ -38,7 +38,7 @@ poetry run pyinstaller \
     bt_sectester/__main__.py
 
 echo "[+] Build complete!"
-echo "[+] Executable location: dist/bt-sectester"
+echo "[+] Executable location: dist/bt-sec-analyzer"
 echo ""
 echo "Run with:"
-echo "  ./dist/bt-sectester"
+echo "  ./dist/bt-sec-analyzer"
