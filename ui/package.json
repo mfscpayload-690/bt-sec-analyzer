@@ -10,7 +10,13 @@
   },
   "devDependencies": {
     "@sveltejs/vite-plugin-svelte": "^6.2.1",
+    "@tailwindcss/vite": "^4.1.18",
     "svelte": "^5.45.2",
+    "tailwindcss": "^4.1.18",
     "vite": "^7.3.1"
+  },
+  "dependencies": {
+    "xterm": "^5.3.0",
+    "xterm-addon-fit": "^0.8.0"
   }
 }
