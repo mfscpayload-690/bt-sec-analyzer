@@ -46,6 +46,7 @@ mypy = "^1.8.0"
 isort = "^5.13.2"
 pylint = "^3.0.3"
 pre-commit = "^3.6.0"
+pyinstaller = {version = "^6.19.0", python = ">=3.12,<3.15"}
 
 [tool.poetry.scripts]
 bt-sec-analyzer = "bt_sectester.__main__:main"
