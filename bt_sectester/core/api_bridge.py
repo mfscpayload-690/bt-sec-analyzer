@@ -53,6 +53,12 @@ class ConfigPatch(BaseModel):
     value: Any
 
 
+class FrontendLogEntry(BaseModel):
+    level: str = "ERROR"
+    message: str
+    context: Optional[Dict[str, Any]] = None
+
+
 # ---------------------------------------------------------------------------
 # Application factory
 # ---------------------------------------------------------------------------
@@ -253,7 +259,14 @@ def create_app() -> FastAPI:
         engine.config.set(patch.key, patch.value)
         return {"ok": True, "key": patch.key}
 
-    # ---- WebSocket: live logs -------------------------------------------
+    @app.post("/api/log")
+    async def frontend_log(entry: FrontendLogEntry):
+        """Receive structured log entries from the Svelte frontend."""
+        level = entry.level.upper()
+        level_no = getattr(logging, level, logging.ERROR)
+        _logger = logging.getLogger("bt_sectester.frontend")
+        _logger.log(level_no, entry.message, extra={"frontend_context": entry.context or {}})
+        return {"ok": True}
 
     @app.websocket("/ws/logs")
     async def ws_logs(ws: WebSocket):
