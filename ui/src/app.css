@@ -19,13 +19,15 @@
   --text-dim:    #475569;
   --text-mono:   'JetBrains Mono', 'Fira Code', monospace;
 
+  /* Header height — single source of truth */
+  --header-h: 48px;
+
   font-family: 'Inter', system-ui, sans-serif;
   color-scheme: dark;
   background-color: var(--bg-base);
   color: var(--text-base);
 }
 
-/* Monospace for technical data */
 .mono { font-family: var(--text-mono); }
 
 body {
@@ -39,74 +41,51 @@ body {
   min-height: 100vh;
 }
 
-/* Subtle scanline texture on backgrounds */
-.scanlines::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: repeating-linear-gradient(
-    0deg,
-    transparent,
-    transparent 2px,
-    rgba(0,0,0,0.03) 2px,
-    rgba(0,0,0,0.03) 4px
-  );
-  pointer-events: none;
-  z-index: 0;
-}
-
-/* Glow effects */
-.glow-cyan  { box-shadow: 0 0 12px rgba(34,211,238,0.15); }
-.glow-green { box-shadow: 0 0 12px rgba(16,185,129,0.15); }
-.glow-red   { box-shadow: 0 0 12px rgba(239,68,68,0.15);  }
-
-/* Status dot */
+/* ── Status dot ───────────────────────────────── */
 .status-dot {
   display: inline-block;
-  width: 8px; height: 8px;
+  width: 7px; height: 7px;
   border-radius: 50%;
   flex-shrink: 0;
 }
 .status-dot.online  { background: var(--green); box-shadow: 0 0 6px var(--green); }
 .status-dot.offline { background: var(--red);   box-shadow: 0 0 6px var(--red); }
 .status-dot.warn    { background: var(--amber);  box-shadow: 0 0 6px var(--amber); }
-.status-dot.pulse   { animation: pulse-dot 2s infinite; }
+.status-dot.pulse   { animation: pulse-dot 2s ease-in-out infinite; }
 
 @keyframes pulse-dot {
-  0%, 100% { opacity: 1; }
-  50%       { opacity: 0.4; }
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.45; transform: scale(0.85); }
 }
 
-/* Slim scrollbar */
+/* ── Slim scrollbar ───────────────────────────── */
 ::-webkit-scrollbar       { width: 4px; height: 4px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: #1e3a4a; border-radius: 2px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--cyan-dim); }
 
-/* Card base */
+/* ── Card ─────────────────────────────────────── */
 .card {
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: 0.75rem;
 }
-
-/* Left-accent card */
 .card-accent-cyan  { border-left: 3px solid var(--cyan); }
 .card-accent-green { border-left: 3px solid var(--green); }
 .card-accent-red   { border-left: 3px solid var(--red); }
 .card-accent-amber { border-left: 3px solid var(--amber); }
 
-/* Table row hover */
+/* ── Table row ────────────────────────────────── */
 .table-row {
   border-bottom: 1px solid var(--border-dim);
   transition: background 0.1s;
 }
 .table-row:hover { background: rgba(34,211,238,0.03); }
 
-/* Animated scanning bar */
+/* ── Scan sweep animation ─────────────────────── */
 @keyframes scan-sweep {
-  0%   { left: -100%; }
-  100% { left: 200%; }
+  0%   { left: -60%; }
+  100% { left: 120%; }
 }
 .scan-sweep {
   position: relative;
@@ -115,8 +94,78 @@ body {
 .scan-sweep::after {
   content: '';
   position: absolute;
-  top: 0; left: -100%;
+  top: 0; left: -60%;
   width: 60%; height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(34,211,238,0.3), transparent);
-  animation: scan-sweep 1.5s linear infinite;
+  background: linear-gradient(90deg, transparent, rgba(34,211,238,0.35), transparent);
+  animation: scan-sweep 1.6s ease-in-out infinite;
+}
+
+/* ── Skeleton loading ─────────────────────────── */
+@keyframes skeleton-pulse {
+  0%, 100% { opacity: 0.35; }
+  50%       { opacity: 0.65; }
+}
+.skeleton {
+  background: var(--bg-elevated);
+  border-radius: 0.3rem;
+  animation: skeleton-pulse 1.8s ease-in-out infinite;
+}
+
+/* ── Toast slide-in ───────────────────────────── */
+@keyframes toast-in {
+  from { transform: translateX(110%); opacity: 0; }
+  to   { transform: translateX(0);    opacity: 1; }
+}
+.toast-in {
+  animation: toast-in 0.22s cubic-bezier(0.16,1,0.3,1) forwards;
+}
+
+/* Toast progress bar shrink — matches 5000ms store timeout */
+@keyframes toast-shrink {
+  from { width: 100%; }
+  to   { width: 0%;   }
+}
+.toast-progress {
+  animation: toast-shrink 5s linear forwards;
+}
+
+/* ── Glow helpers ─────────────────────────────── */
+.glow-cyan  { box-shadow: 0 0 16px rgba(34,211,238,0.15); }
+.glow-green { box-shadow: 0 0 16px rgba(16,185,129,0.15); }
+.glow-red   { box-shadow: 0 0 16px rgba(239,68,68,0.15);  }
+
+/* ── Subtle scanline texture ──────────────────── */
+.scanlines::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0,0,0,0.025) 2px,
+    rgba(0,0,0,0.025) 4px
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Section divider label ────────────────────── */
+.section-label {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  padding: 0 0.75rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.25rem;
+  opacity: 0.6;
+}
+
+/* ── Input focus ring consistent ─────────────── */
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: rgba(34,211,238,0.4) !important;
+  box-shadow: 0 0 0 2px rgba(34,211,238,0.06);
 }
